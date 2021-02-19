@@ -47,7 +47,6 @@ func LoadConfig(path string) (Configs, *MainConfig) {
 	if err != nil {
 		log.Panicln("decode config file failed:", string(buf), err)
 	}
-
 	return allConfigs, mainConfig
 }
 
