@@ -14,7 +14,7 @@ import (
 
 type Configs map[string]json.RawMessage
 
-var configPath string = "./config.json"
+var configPath = "./config.json"
 
 type Desc struct {
 	Time    string `json:"time"`
@@ -92,11 +92,11 @@ func main() {
 	//fmt.Println(string(value))
 
 	var data []Desc
-	err := json.Unmarshal([]byte(value), &data)
+	err := json.Unmarshal(value, &data)
 	//fmt.Println(strings.Split(data[0].Time, ":")[0])
 	//fmt.Println(len(data))
 	if err != nil {
-		log.Panicln("decode config file failed:", string("x"), err)
+		log.Panicln("decode config file failed:", "x", err)
 	}
 
 	ticker := time.NewTicker(time.Second * 1)
