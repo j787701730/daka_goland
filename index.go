@@ -79,7 +79,8 @@ func ShowMessage2(title, text string) {
 	user32dll, _ := syscall.LoadLibrary("user32.dll")
 	user32 := syscall.NewLazyDLL("user32.dll")
 	MessageBoxW := user32.NewProc("MessageBoxW")
-	MessageBoxW.Call(IntPtr(0), StrPtr(text), StrPtr(title), IntPtr(0))
+	// 0x1000 保持在其他窗口之上
+	MessageBoxW.Call(IntPtr(0), StrPtr(text), StrPtr(title), 0x1000)
 	defer syscall.FreeLibrary(user32dll)
 	closeFlag = true
 }
